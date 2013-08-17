@@ -1,14 +1,6 @@
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
-alias mkdir='mkdir -p'
+source ~/.aliases
 
-alias ls="ls -lFh --color=auto --group-directories-first"
-alias syncmediatoNAS="/home/calvin/.scripts/sync-media-to-NAS.sh"
 export PS1='\[\033[01;32m\]\u@\h \[\033[00;31m\]\W \$ \[\033[00m\]'
-
-export DEBFULLNAME="Calvin Loewen"
-export DEBEMAIL="calvin.loewen@gmail.com"
 
 # User specific environment and startup programs:
 export LANG=en_CA.UTF-8
