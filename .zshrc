@@ -1,3 +1,26 @@
+# Skip all this for non-interactive shells
+[[ -z "$PS1" ]] && return
+
+# Zsh settings for history
+export HISTIGNORE="&:ls:[bf]g:exit:reset:clear:cd:cd ..:cd.."
+export HISTSIZE=25000
+export HISTFILE=~/.zsh_history
+export SAVEHIST=10000
+setopt INC_APPEND_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
+setopt HIST_VERIFY
+
+# Say how long a command took, if it took more than 30 seconds
+export REPORTTIME=30
+
+# Prompts for confirmation after 'rm *' etc
+# Helps avoid mistakes like 'rm * o' when 'rm *.o' was intended
+setopt RM_STAR_WAIT
+
+
+##### oh-my-zsh #####
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -7,12 +30,13 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="gentoo"
 #ZSH_THEME="candy-kingdom"
+#ZSH_THEME="intheclear"
 ZSH_THEME="calvin"
 
-# Example aliases
+###### Aliases  ######
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias lll="ls -lFh --color=auto --group-directories-first"
+source ~/.aliases
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -49,3 +73,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+
+#I don't like this feature. I think no one does. It corrects you, when you are trying to create new files, for example.
+unsetopt correctall 
+
+compctl -g '~/.teamocil/*(:t:r)' teamocil
+
